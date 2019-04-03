@@ -1,7 +1,7 @@
-class LeMondeWidget extends Widget {
+class randomWikiWidget extends Widget {
 	
 	constructor(id, app) {
-		super(id, LeMondeModel, LeMondeView, LeMondeController, app);
+		super(id, randomWikiModel, randomWikiView, randomWikiController, app);
 	}
 	
 	setUp() {
@@ -23,7 +23,7 @@ class LeMondeWidget extends Widget {
 	
 }
 
-class LeMondeModel extends WidgetModel {
+class randomWikiModel extends WidgetModel {
 	
 	constructor() {
 		super();
@@ -36,7 +36,7 @@ class LeMondeModel extends WidgetModel {
 
 }
 
-class LeMondeView extends WidgetView {
+class randomWikiView extends WidgetView {
 	
 	constructor() {
 		super();
@@ -66,7 +66,7 @@ class LeMondeView extends WidgetView {
 	
 }
 
-class LeMondeController extends WidgetController {
+class randomWikiController extends WidgetController {
 	
 	constructor() {
 		super();
