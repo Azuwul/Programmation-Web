@@ -95,6 +95,7 @@ class randomWikiController extends WidgetController {
 		let parser = new DOMParser(); // init dom parser
 		let dom = parser.parseFromString(domstr, "text/html"); // inject result
 		let article = new xph().doc(dom).ctx(dom).craft('/html/body/div[3]/div[3]/div[4]/div/p[1]').firstResult; // find interesting things
+		let titre = new xph().doc(dom).ctx(dom).craft('//*[@id="firstHeading"]').firstResult;
 		this.mvc.view.update(article.textContent, article.getAttribute("href"));
 	}
 	
