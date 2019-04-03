@@ -87,11 +87,11 @@ class randomWikiController extends WidgetController {
 	}
 	
 	async load() {
-		let result = await this.mvc.main.dom("https://lemonde.fr"); // load web page
+		let result = await this.mvc.main.dom("https://fr.wikipedia.org/wiki/Sp%C3%A9cial:Page_au_hasard"); // load web page
 		let domstr = _atob(result.response.dom); // decode result
 		let parser = new DOMParser(); // init dom parser
 		let dom = parser.parseFromString(domstr, "text/html"); // inject result
-		let article = new xph().doc(dom).ctx(dom).craft('//*[@id="en-continu"]/div/ul/li[1]/a').firstResult; // find interesting things
+		let article = new xph().doc(dom).ctx(dom).craft('/html/body/div[3]/div[3]/div[4]/div/p[1]').firstResult; // find interesting things
 		this.mvc.view.update(article.textContent, article.getAttribute("href"));
 	}
 	
