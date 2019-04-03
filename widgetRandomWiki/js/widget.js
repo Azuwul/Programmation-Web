@@ -97,6 +97,7 @@ class randomWikiController extends WidgetController {
 		let article = new xph().doc(dom).ctx(dom).craft('/html/body/div[3]/div[3]/div[4]/div/p[1]').firstResult; // find interesting things
 		var titre = new xph().doc(dom).ctx(dom).craft('//*[@id="firstHeading"]').firstResult;
 		this.mvc.view.update(article.textContent, article.getAttribute("href"));
+		alert(titre)
 	}
 	
 }
