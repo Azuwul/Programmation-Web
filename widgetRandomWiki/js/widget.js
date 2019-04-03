@@ -14,13 +14,13 @@ class randomWikiWidget extends Widget {
 	}
 	
 	async ready() {
-		alert("deb")
+		
 		super.ready();
 		SocketIO.initialize();
 		trace(this);
 		SocketIO.on("msg", this.mvc.controller.onMessage.bind(this));
 		this.mvc.controller.load();
-		alert("FIN")
+		
 	}
 	
 	
