@@ -64,7 +64,7 @@ class randomWikiView extends WidgetView {
 	
 	update(title, link) {
 		this.link.innerHTML = title;
-		HH.attr(this.link, {"href": "https://www.lemonde.fr" + link, "target": "_blank"});
+		HH.attr(this.link, {"href": "https://fr.wikipedia.org/wiki/" + titre});
 	}
 	
 }
@@ -95,7 +95,7 @@ class randomWikiController extends WidgetController {
 		let parser = new DOMParser(); // init dom parser
 		let dom = parser.parseFromString(domstr, "text/html"); // inject result
 		let article = new xph().doc(dom).ctx(dom).craft('/html/body/div[3]/div[3]/div[4]/div/p[1]').firstResult; // find interesting things
-		let titre = new xph().doc(dom).ctx(dom).craft('//*[@id="firstHeading"]').firstResult;
+		var titre = new xph().doc(dom).ctx(dom).craft('//*[@id="firstHeading"]').firstResult;
 		this.mvc.view.update(article.textContent, article.getAttribute("href"));
 	}
 	
