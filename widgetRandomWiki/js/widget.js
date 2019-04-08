@@ -54,11 +54,15 @@ class randomWikiView extends WidgetView {
 		super.draw();
 		this.link = HH.create("a");
 		SS.style(this.link, {"fontSize": "10px", "textDecoration": "none"});
-		this.stage.appendChild(this.link);
 		
 		this.title= HH.create("p");
 		SS.style(this.link, {"fontSize": "15px", "textDecoration": "none"});
 		this.stage.appendChild(this.title);
+		this.stage.appendChild(this.link);
+		
+		
+		
+		
 		
 		this.try.footer.innerHTML = "test socket";
 		SS.style(this.try.footer, {"userSelect": "none", "cursor": "pointer"});
