@@ -7,18 +7,15 @@ class randomWikiWidget extends Widget {
 	setUp() {
 		super.setUp();
 		this.header = true;
-		this.footer = true;
+		this.footer = false;
 		this.sizeX = 2;
-		this.sizeY = 1;
-		this.radius = 15;
+		this.sizeY = 1,5;
+		this.radius = 20;
 	}
 	
 	async ready() {
 		
 		super.ready();
-		SocketIO.initialize();
-		trace(this);
-		SocketIO.on("msg", this.mvc.controller.onMessage.bind(this));
 		this.mvc.controller.load();
 		
 	}
@@ -52,28 +49,28 @@ class randomWikiView extends WidgetView {
 
 	draw() {
 		super.draw();
-		this.link = HH.create("a");
+		this.link = HH.create("div");
+		this.wiki = HH.create("a");
+		this.butt = HH.create("button")
+		//Events.on(this.butt, "click", event => this.mvc.controller.random(event))
+		SS.style(this.stage, {"overflow-x": "hidden","overflow-y": "scroll"})
 		SS.style(this.link, {"fontSize": "10px", "textDecoration": "none"});
 		
 		this.title= HH.create("p");
 		SS.style(this.title, {"fontSize": "15px", "textDecoration": "none"});
 		this.stage.appendChild(this.title);
+		this.link.appendChild(this.wiki);
 		this.stage.appendChild(this.link);
+
 		
 		
-		
-		
-		
-		this.try.footer.innerHTML = "test socket";
-		SS.style(this.try.footer, {"userSelect": "none", "cursor": "pointer"});
-		Events.on(this.try.footer, "click", event => this.mvc.controller.socketClick());
-		this.try.stage.appendChild(this.try.footer);
 	}
 	
 	update(title, link, arr) {
 		this.title.innerHTML = arr;
-		this.link.innerHTML = title;
-		HH.attr(this.link, {"href": "https://fr.wikipedia.org/wiki/" + arr});
+		this.wiki.innerHTML = title;
+		HH.attr(this.wiki, {"href": "https://fr.wikipedia.org/wiki/" + arr, "target": "_blank"});
+		//HH.attr(this.title, {"href": "https://fr.wikipedia.org/wiki/" + arr, "target": "_blank"});
 	}
 	
 }
@@ -89,14 +86,6 @@ class randomWikiController extends WidgetController {
 		
 	}
 	
-	onMessage(data) {
-		trace("received socket msg", data);
-	}
-	
-	socketClick(event) {
-		trace("test socket");
-		SocketIO.send("msg", {test: "message"});
-	}
 	
 	async load() {
 		let result = await this.mvc.main.dom("https://fr.wikipedia.org/wiki/Sp%C3%A9cial:Page_au_hasard"); // load web page
