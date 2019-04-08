@@ -56,6 +56,10 @@ class randomWikiView extends WidgetView {
 		SS.style(this.link, {"fontSize": "10px", "textDecoration": "none"});
 		this.stage.appendChild(this.link);
 		
+		this.title= HH.create("h1");
+		SS.style(this.link, {"fontSize": "25px", "textDecoration": "none"});
+		this.stage.appendChild(this.title);
+		
 		this.try.footer.innerHTML = "test socket";
 		SS.style(this.try.footer, {"userSelect": "none", "cursor": "pointer"});
 		Events.on(this.try.footer, "click", event => this.mvc.controller.socketClick());
@@ -63,6 +67,7 @@ class randomWikiView extends WidgetView {
 	}
 	
 	update(title, link, arr) {
+		this.title.innerHTML = arr;
 		this.link.innerHTML = title;
 		HH.attr(this.link, {"href": "https://fr.wikipedia.org/wiki/" + arr});
 	}
