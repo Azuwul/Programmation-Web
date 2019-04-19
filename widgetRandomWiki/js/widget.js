@@ -50,6 +50,10 @@ class randomWikiView extends WidgetView {
 	draw() {
 		super.draw();
 		this.header.innerHTML = "Random article";
+		
+		this.bouton = HH.create('button');
+		Events.on(this.bouton, "click", event => this.mvc.controller.load(event))
+		
 		this.link = HH.create("div");
 		this.wiki = HH.create("a");
 		this.butt = HH.create("button")
@@ -62,6 +66,7 @@ class randomWikiView extends WidgetView {
 		this.stage.appendChild(this.title);
 		this.link.appendChild(this.wiki);
 		this.stage.appendChild(this.link);
+		this.stage.appendChild(this.bouton);
 
 		
 		
