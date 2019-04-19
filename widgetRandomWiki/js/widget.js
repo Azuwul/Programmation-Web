@@ -49,6 +49,7 @@ class randomWikiView extends WidgetView {
 
 	draw() {
 		super.draw();
+		this.header.innerHTML = "Article Aléatoire";
 		this.link = HH.create("div");
 		this.wiki = HH.create("a");
 		this.butt = HH.create("button")
