@@ -16,7 +16,7 @@ class randomWikiWidget extends Widget {
 	async ready() {
 		
 		super.ready();
-		this.mvc.controller.load();
+		//this.mvc.controller.load();
 		
 	}
 	
@@ -71,7 +71,6 @@ class randomWikiView extends WidgetView {
 		this.title.innerHTML = arr;
 		this.wiki.innerHTML = title;
 		HH.attr(this.wiki, {"href": "https://fr.wikipedia.org/wiki/" + arr, "target": "_blank"});
-		//HH.attr(this.title, {"href": "https://fr.wikipedia.org/wiki/" + arr, "target": "_blank"});
 	}
 	
 }
