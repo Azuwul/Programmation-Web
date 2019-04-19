@@ -66,6 +66,7 @@ class randomWikiView extends WidgetView {
 		this.stage.appendChild(this.title);
 		this.link.appendChild(this.wiki);
 		this.stage.appendChild(this.link);
+		this.bouton.innerHTML= "Générer un article aléatoire";
 		this.stage.appendChild(this.bouton);
 
 		
