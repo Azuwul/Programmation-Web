@@ -8,16 +8,15 @@ class randomWikiWidget extends Widget {
 		super.setUp();
 		this.header = true;
 		this.footer = false;
-		this.sizeX = 2;
-		this.sizeY = 1,5;
-		this.radius = 20;
+		this.sizeX = 3;
+		this.sizeY = 3;
+		this.radius = 30;
 	}
 	
 	async ready() {
 		
 		super.ready();
 		this.mvc.controller.load();
-		
 	}
 	
 	
@@ -53,30 +52,62 @@ class randomWikiView extends WidgetView {
 		
 		this.bouton = HH.create('button');
 		Events.on(this.bouton, "click", event => this.mvc.controller.load(event))
+		Events.on(this.bouton, "click", event => this.mvc.controller.somm())
+		Events.on(this.bouton, "click", event => this.sommaire())
+		
+		
 		
 		this.link = HH.create("div");
 		this.wiki = HH.create("a");
-		this.butt = HH.create("button")
-		//Events.on(this.butt, "click", event => this.mvc.controller.random(event))
+		
 		SS.style(this.stage, {"overflow-x": "hidden","overflow-y": "scroll"})
 		SS.style(this.link, {"fontSize": "10px", "textDecoration": "none"});
 		
 		this.title= HH.create("p");
 		SS.style(this.title, {"textDecoration": "none", "font": "small-caps bold 11px/1 sans-serif", "text-align": "center"});
 		this.stage.appendChild(this.title);
+		
 		this.link.appendChild(this.wiki);
 		this.stage.appendChild(this.link);
 		this.bouton.innerHTML= "Générer un article aléatoire";
 		this.stage.appendChild(this.bouton);
-
-		
+		this.titles = HH.create('h1')
+		this.titles.innerHTML = "SOMMAIRE"
+		this.stage.appendChild(this.titles);
+		this.testo = HH.create("div")
+		this.stage.appendChild(this.testo);
 		
 	}
 	
-	update(title, link, arr) {
+	sommaire(x){
+		
+		
+		
+		
+		
+		console.log(x)
+		
+		
+		
+		this.list = HH.create('li');
+		this.list.innerHTML = x
+		
+		this.testo.appendChild(this.list);
+		HH.attr(this.list,{"href": "https://fr.wikipedia.org/wiki/", "target": "_blank"});
+		
+		
+		
+	}
+	update(title, link, arr, somm) {
+		
+		this.testo.innerHTML = ""
+		this.test = arr + "#Biographie"
+		
 		this.title.innerHTML = arr;
 		this.wiki.innerHTML = title;
 		HH.attr(this.wiki, {"href": "https://fr.wikipedia.org/wiki/" + arr, "target": "_blank"});
+		
+		
 	}
 	
 }
@@ -92,6 +123,21 @@ class randomWikiController extends WidgetController {
 		
 	}
 	
+	somm(x){
+		
+		
+		for(var i = 0; i<x.length; i++){
+			
+			var u = x[i].childNodes
+			for(var l = 0;l<u.length;l++){
+				
+				
+				
+				this.mvc.view.sommaire(u[l].textContent);
+			}
+	
+}
+}
 	
 	async load() {
 		let result = await this.mvc.main.dom("https://fr.wikipedia.org/wiki/Sp%C3%A9cial:Page_au_hasard"); // load web page
@@ -99,10 +145,11 @@ class randomWikiController extends WidgetController {
 		let parser = new DOMParser(); // init dom parser
 		let dom = parser.parseFromString(domstr, "text/html"); // inject result
 		let article = new xph().doc(dom).ctx(dom).craft('/html/body/div[3]/div[3]/div[4]/div/p[1]').firstResult; // find interesting things
-		var titre = new xph().doc(dom).ctx(dom).craft('//*[@id="firstHeading"]').firstResult;
+		let titre = new xph().doc(dom).ctx(dom).craft('//*[@id="firstHeading"]').firstResult;
+		let table = await new xph().doc(dom).ctx(dom).craft('//*[@id="toc"]/ul').firstResult;
 		this.mvc.view.update(article.textContent, article.getAttribute("href"), titre.textContent);
-		
-		
+		this.somm(table.childNodes)
 	}
 	
 }
+
