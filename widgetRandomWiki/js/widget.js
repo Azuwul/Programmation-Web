@@ -8,8 +8,8 @@ class randomWikiWidget extends Widget {
 		super.setUp();
 		this.header = true;
 		this.footer = false;
-		this.sizeX = 1.5;
-		this.sizeY = 1;
+		this.sizeX = 2;
+		this.sizeY = 1.5;
 		this.radius = 20;
 	}
 	
