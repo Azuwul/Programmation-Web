@@ -48,7 +48,7 @@ class randomWikiView extends WidgetView {
 
 	draw() {
 		super.draw();
-		SS.style(this.stage, {"background-color": "#F0F8FF"});
+		SS.style(this.stage, {"background-color": "#f6f6f6"});
 		this.header.innerHTML = "Random article";
 		
 		this.bouton = HH.create('button');
