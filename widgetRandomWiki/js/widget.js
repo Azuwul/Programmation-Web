@@ -85,8 +85,10 @@ class randomWikiView extends WidgetView {
 		
 		
 		
-		
-		
+		if (typeof x === 'undefined') {
+ 		alert(typeof x)
+     }
+		else{
 		console.log(x)
 		
 		
@@ -97,7 +99,7 @@ class randomWikiView extends WidgetView {
 		this.testo.appendChild(this.list);
 		HH.attr(this.list,{"href": "https://fr.wikipedia.org/wiki/", "target": "_blank"});
 		
-		
+		}
 		
 	}
 	update(title, link, arr, somm) {
