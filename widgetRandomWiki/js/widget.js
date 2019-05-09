@@ -63,7 +63,9 @@ class randomWikiView extends WidgetView {
 		SS.style(this.stage, {"overflow-x": "hidden","overflow-y": "scroll"})
 		SS.style(this.link, {"fontSize": "10px", "textDecoration": "none"});
 		
-		this.title= HH.create("p");
+		this.title= HH.create("h1");
+		this.tiitle = HH.create("a");
+		this.title.appendChild(this.tiitle)
 		SS.style(this.title, {"textDecoration": "none", "font": "small-caps bold 11px/1 sans-serif", "text-align": "center"});
 		this.stage.appendChild(this.title);
 		
@@ -103,9 +105,10 @@ class randomWikiView extends WidgetView {
 		this.testo.innerHTML = ""
 		this.test = arr + "#Biographie"
 		
-		this.title.innerHTML = arr;
+		this.tiitle.innerHTML = arr;
 		this.wiki.innerHTML = title;
 		HH.attr(this.wiki, {"href": "https://fr.wikipedia.org/wiki/" + arr, "target": "_blank"});
+		HH.attr(this.tiitle, {"href": "https://fr.wikipedia.org/wiki/" + arr, "target": "_blank"});
 		
 		
 	}
