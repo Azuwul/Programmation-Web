@@ -9,8 +9,8 @@ class randomWikiWidget extends Widget {
 		this.header = true;
 		this.footer = false;
 		this.sizeX = 2;
-		this.sizeY = 1.5;
-		this.radius = 20;
+		this.sizeY = 1;
+		this.radius = 25;
 	}
 	
 	async ready() {
