@@ -86,7 +86,7 @@ class randomWikiView extends WidgetView {
 		
 		
 		if (typeof x === 'undefined') {
- 		alert(typeof x)
+ 		console.log(x)
      }
 		else{
 		console.log(x)
