@@ -57,7 +57,7 @@ class randomWikiView extends WidgetView {
 		Events.on(this.bouton, "click", event => this.sommaire())
 		
 		
-		
+		this.ligne1 = HH.create("hr")
 		this.link = HH.create("div");
 		this.wiki = HH.create("a");
 		
@@ -67,12 +67,14 @@ class randomWikiView extends WidgetView {
 		this.title= HH.create("h1");
 		this.tiitle = HH.create("a");
 		this.title.appendChild(this.tiitle)
+		this.title.appendChild(this.ligne1)
+		
 		SS.style(this.title, {"textDecoration": "none", "font": "small-caps bold 11px/1 sans-serif", "text-align": "center"});
 		this.stage.appendChild(this.title);
 		
 		this.link.appendChild(this.wiki);
 		this.stage.appendChild(this.link);
-		this.bouton.innerHTML= "Générer un article aléatoire";
+		this.bouton.innerHTML= "Article au hasard";
 		this.stage.appendChild(this.bouton);
 		this.titles = HH.create('h1')
 		this.titles.innerHTML = "SOMMAIRE"
