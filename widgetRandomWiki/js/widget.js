@@ -7,7 +7,7 @@ class randomWikiWidget extends Widget {
 	setUp() {
 		super.setUp();
 		this.header = true;
-		this.footer = false;
+		this.footer = true;
 		this.sizeX = 2;
 		this.sizeY = 1;
 		this.radius = 25;
@@ -52,9 +52,9 @@ class randomWikiView extends WidgetView {
 		this.header.innerHTML = "Random article";
 		
 		this.bouton = HH.create('button');
-		Events.on(this.bouton, "click", event => this.mvc.controller.load(event))
-		Events.on(this.bouton, "click", event => this.mvc.controller.somm())
-		Events.on(this.bouton, "click", event => this.sommaire())
+		Events.on(this.footer, "click", event => this.mvc.controller.load(event))
+		Events.on(this.footer, "click", event => this.mvc.controller.somm())
+		Events.on(this.footer, "click", event => this.sommaire())
 		
 		
 		this.ligne1 = HH.create("hr")
@@ -68,19 +68,21 @@ class randomWikiView extends WidgetView {
 		this.tiitle = HH.create("a");
 		this.title.appendChild(this.tiitle)
 		this.title.appendChild(this.ligne1)
-		
+		SS.style(this.tiitle,{"text-decoration": "none", "color" : "black"});
 		SS.style(this.title,{"text-decoration": "none", "font": "Linux Libertine", "text-align": "center", "font-size": "1.8em"});
 		this.stage.appendChild(this.title);
-		
+		SS.style(this.footer, {"userSelect": "none", "cursor": "pointer","position" : "relative"});
 		this.link.appendChild(this.wiki);
 		this.stage.appendChild(this.link);
 		this.bouton.innerHTML= "Article au hasard";
-		this.stage.appendChild(this.bouton);
+		//this.stage.appendChild(this.bouton);
 		this.titles = HH.create('h1')
 		this.titles.innerHTML = "SOMMAIRE"
 		this.stage.appendChild(this.titles);
 		this.testo = HH.create("div")
 		this.stage.appendChild(this.testo);
+		this.footer.innerHTML = "Article au hasard"
+		this.stage.appendChild(this.footer)
 		
 	}
 	
@@ -160,4 +162,3 @@ class randomWikiController extends WidgetController {
 	}
 	
 }
-
