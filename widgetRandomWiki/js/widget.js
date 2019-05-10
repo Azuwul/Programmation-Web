@@ -77,7 +77,7 @@ class randomWikiView extends WidgetView {
 		this.bouton.innerHTML= "Article au hasard";
 		//this.stage.appendChild(this.bouton);
 		this.titles = HH.create('h1')
-		this.titles.innerHTML = "SOMMAIRE"
+		this.titles.innerHTML = "Sommaire"
 		this.stage.appendChild(this.titles);
 		this.testo = HH.create("div")
 		this.stage.appendChild(this.testo);
