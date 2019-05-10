@@ -69,7 +69,7 @@ class randomWikiView extends WidgetView {
 		this.title.appendChild(this.tiitle)
 		this.title.appendChild(this.ligne1)
 		SS.style(this.tiitle,{"text-decoration": "none", "color" : "black"});
-		SS.style(this.title,{"text-decoration": "none", "font": "Linux Libertine", "text-align": "center", "font-size": "1.8em"});
+		SS.style(this.title,{"text-decoration": "none", "font": "Linux Libertine", "font-size": "1.8em"});
 		this.stage.appendChild(this.title);
 		SS.style(this.footer, {"userSelect": "none", "cursor": "pointer","position" : "relative"});
 		this.link.appendChild(this.wiki);
@@ -78,6 +78,7 @@ class randomWikiView extends WidgetView {
 		//this.stage.appendChild(this.bouton);
 		this.titles = HH.create('h1')
 		this.titles.innerHTML = "Sommaire"
+		SS.style(this.titles,{"text-decoration": "none", "text-align": "center", "font-size": "0.875em"});
 		this.stage.appendChild(this.titles);
 		this.testo = HH.create("div")
 		this.stage.appendChild(this.testo);
