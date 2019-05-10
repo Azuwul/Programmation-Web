@@ -69,7 +69,7 @@ class randomWikiView extends WidgetView {
 		this.title.appendChild(this.tiitle)
 		this.title.appendChild(this.ligne1)
 		
-		SS.style(this.title,{"text-decoration": "none", "font": "Linux Libertine", "text-align": "center", "font-size": "1.8em";});
+		SS.style(this.title,{"text-decoration": "none", "font": "Linux Libertine", "text-align": "center", "font-size": "1.8em"});
 		this.stage.appendChild(this.title);
 		
 		this.link.appendChild(this.wiki);
